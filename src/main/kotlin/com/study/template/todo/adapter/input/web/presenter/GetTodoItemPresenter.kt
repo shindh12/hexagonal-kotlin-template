@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component
 @Component
 class GetTodoItemPresenter {
     fun present(item: TodoItem): GetTodoItemViewModel {
-        return GetTodoItemViewModel(TodoItemDTO(item.id.value, item.contents, item.status.toString()))
+        return GetTodoItemViewModel(TodoItemDTO(item.id!!.value, item.contents, item.status.toString()))
     }
 }

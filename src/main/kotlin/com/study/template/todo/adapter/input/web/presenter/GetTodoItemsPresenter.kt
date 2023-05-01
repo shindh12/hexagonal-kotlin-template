@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 @Component
 class GetTodoItemsPresenter {
     fun present(items: List<TodoItem>): GetTodoItemsViewModel {
-        val dtos = items.map { TodoItemDTO(it.id.value, it.contents, it.status.toString()) }.toList()
+        val dtos = items.map { TodoItemDTO(it.id!!.value, it.contents, it.status.toString()) }.toList()
         return GetTodoItemsViewModel(dtos)
     }
 }

@@ -1,17 +1,22 @@
 package com.study.template.todo.application.service
 
 import com.study.template.todo.application.port.input.GetTodoItemUsecase
+import com.study.template.todo.application.port.output.GetTodoItemPort
 import com.study.template.todo.domain.TodoItem
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
-class TodoItemQueryService : GetTodoItemUsecase {
+class TodoItemQueryService(val getTodoItemPort: GetTodoItemPort) : GetTodoItemUsecase {
+
+    @Transactional(readOnly = true)
     override fun getTodoItems(): List<TodoItem> {
-        TODO("Not yet implemented")
+        return getTodoItemPort.getTodoItems()
     }
 
+    @Transactional(readOnly = true)
     override fun getTodoItem(query: GetTodoItemUsecase.GetTodoItemQuery): TodoItem {
-        TODO("Not yet implemented")
+        return getTodoItemPort.getTodoItem(query.id)
     }
 
 }
