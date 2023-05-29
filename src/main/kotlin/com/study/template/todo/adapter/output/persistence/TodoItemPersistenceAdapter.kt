@@ -17,7 +17,7 @@ class TodoItemPersistenceAdapter : SaveTodoItemPort, GetTodoItemPort, DeleteTodo
         TODO("Not yet implemented")
     }
 
-    override fun getTodoItem(id: TodoId): TodoItem {
+    override fun getTodoItem(id: TodoId): TodoItem? {
         TODO("Not yet implemented")
     }
 

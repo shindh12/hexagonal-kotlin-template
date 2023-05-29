@@ -40,9 +40,13 @@ dependencies {
     implementation("io.zipkin.reporter2:zipkin-reporter-brave")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j")
-
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     runtimeOnly("com.mysql:mysql-connector-j")
+
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4") // for web mvc swagger
+
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation("org.testcontainers:junit-jupiter")
@@ -50,6 +54,7 @@ dependencies {
     testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
     testImplementation("io.kotest:kotest-assertions-core:5.5.5")
     testImplementation("com.tngtech.archunit:archunit-junit5:1.0.1")
+    testImplementation("com.appmattus.fixture:fixture:1.2.0")
 }
 
 dependencyManagement {

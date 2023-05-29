@@ -13,9 +13,11 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-class TodoItemCommandService(val getTodoItemPort: GetTodoItemPort,
-                             val saveTodoItemPort: SaveTodoItemPort,
-                             val deleteTodoItemPort: DeleteTodoItemPort) : CreateTodoItemUsecase, UpdateTodoContentsUsecase, DeleteTodoItemUsecase, UpdateTodoStatusUsecase {
+class TodoItemCommandService(
+    val getTodoItemPort: GetTodoItemPort,
+    val saveTodoItemPort: SaveTodoItemPort,
+    val deleteTodoItemPort: DeleteTodoItemPort
+) : CreateTodoItemUsecase, UpdateTodoContentsUsecase, DeleteTodoItemUsecase, UpdateTodoStatusUsecase {
 
     @Transactional
     override fun createTodoItem(command: CreateTodoItemUsecase.CreateTodoItemCommand) {
@@ -31,14 +33,14 @@ class TodoItemCommandService(val getTodoItemPort: GetTodoItemPort,
     @Transactional
     override fun updateContents(command: UpdateTodoContentsUsecase.UpdateTodoContentsCommand) {
         val before = getTodoItemPort.getTodoItem(command.id)
-        val after = TodoItem(before.id, command.contents, before.status)
+        val after = TodoItem(before?.id, command.contents, before!!.status)
         saveTodoItemPort.save(after)
     }
 
     @Transactional
     override fun updateStatus(command: UpdateTodoStatusUsecase.UpdateTodoStatusCommand) {
         val before = getTodoItemPort.getTodoItem(command.id)
-        val after = TodoItem(before.id, before.contents, command.status)
+        val after = TodoItem(before?.id, before!!.contents, command.status)
         saveTodoItemPort.save(after)
     }
 

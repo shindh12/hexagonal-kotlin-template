@@ -5,5 +5,5 @@ import com.study.template.todo.domain.TodoItem
 
 interface GetTodoItemPort {
     fun getTodoItems(): List<TodoItem>
-    fun getTodoItem(id: TodoId): TodoItem
+    fun getTodoItem(id: TodoId): TodoItem?
 }
